@@ -2,9 +2,9 @@ checkSSHAdd () {
     if [ "$(ssh-add -l)" = "The agent has no identities." ]
     then
         ssh-add
-        ssh mblalock.dev.hearsaylabs.com
+        ssh $1
     else
-        ssh mblalock.dev.hearsaylabs.com
+        ssh $1
     fi
 }
 
@@ -14,7 +14,8 @@ if hash pyenv 2>/dev/null; then
 fi
 
 alias fix="sudo service uwsgi2 restart && sudo service nginx restart"
-alias sshdev="checkSSHAdd"
+alias sshdev="checkSSHAdd mblalock.dev.hearsaylabs.com"
+alias sshlatest="checkSSHAdd latest.dev.hearsaylabs.com"
 alias deploylogin="ssh -t mblalock@ops.prod.pnw.hearsaylabs.com \"tmux attach || tmux new\""
 alias contacts="cd ~/projects/hearsay-contacts"
 alias labs="cd ~/projects/HearsayLabs"
