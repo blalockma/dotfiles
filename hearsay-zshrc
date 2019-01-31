@@ -1,3 +1,16 @@
+# -- Hearsay-specific Fixes -- #
+
+if hash pyenv 2>/dev/null; then
+    eval "$(pyenv init -)"
+    export PIPENV_PYTHON=$(pyenv root)/shims/python
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# -- Aliases -- #
+
 fixssh() {
     for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
         if (tmux show-environment | grep "^${key}" > /dev/null); then
@@ -17,22 +30,6 @@ checkSSHAdd () {
     fi
 }
 
-createBranchFromMaster () {
-    git checkout -- *
-    git checkout master
-    git fetch upstream
-    git reset --hard upstream/master
-    git push
-    git checkout -b $1
-    git push -u origin $1
-}
-
-if hash pyenv 2>/dev/null; then
-    eval "$(pyenv init -)"
-    export PIPENV_PYTHON=$(pyenv root)/shims/python
-fi
-
-alias nb="createBranchFromMaster $1"
 alias fix="sudo service uwsgi2 restart && sudo service nginx restart"
 alias sshdev="checkSSHAdd mblalock.dev.hearsaylabs.com"
 alias sshlatest="checkSSHAdd latest.dev.hearsaylabs.com"
@@ -42,3 +39,5 @@ alias contacts-client="cd ~/projects/hearsay-contacts-client"
 alias labs="cd ~/projects/HearsayLabs"
 alias helm="cd ~/projects/hearsay-helm"
 alias activities="cd ~/projects/hearsay-activities"
+alias gs="git status"
+alias gclean="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -D"
