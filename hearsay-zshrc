@@ -1,16 +1,4 @@
-# -- Hearsay-specific Fixes -- #
-
-if hash pyenv 2>/dev/null; then
-    eval "$(pyenv init -)"
-    export PIPENV_PYTHON=$(pyenv root)/shims/python
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # -- Aliases -- #
-
 fixssh() {
     for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
         if (tmux show-environment | grep "^${key}" > /dev/null); then
@@ -24,13 +12,14 @@ checkSSHAdd () {
     if [ "$(ssh-add -l)" = "The agent has no identities." ]
     then
         ssh-add
-        ssh -t $1 "tmux attach || tmux new"
+        ssh -t $1 "tmux new-session -s default || tmux attach-session -t default"
     else
-        ssh -t $1 "tmux attach || tmux new"
+        ssh -t $1 "tmux new-session -s default || tmux attach-session -t default"
     fi
 }
 
 alias fix="sudo service uwsgi2 restart && sudo service nginx restart"
+alias dev="tmux attach || tmux new"
 alias sshdev="checkSSHAdd mblalock.dev.hearsaylabs.com"
 alias sshlatest="checkSSHAdd latest.dev.hearsaylabs.com"
 alias sshops="checkSSHAdd ops.prod.pnw.hearsaylabs.com"
@@ -41,3 +30,5 @@ alias helm="cd ~/projects/hearsay-helm"
 alias activities="cd ~/projects/hearsay-activities"
 alias gs="git status"
 alias gclean="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -D"
+alias d="clear && git diff"
+alias c="clear && git status"
