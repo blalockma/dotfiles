@@ -19,7 +19,7 @@ checkSSHAdd () {
 }
 
 alias fix="sudo service uwsgi2 restart && sudo service nginx restart"
-alias dev="tmux attach || tmux new"
+alias dev="tmux new-session -s default || tmux attach-session -t default"
 alias sshdev="checkSSHAdd mblalock.dev.hearsaylabs.com"
 alias sshlatest="checkSSHAdd latest.dev.hearsaylabs.com"
 alias sshops="checkSSHAdd ops.prod.pnw.hearsaylabs.com"
@@ -28,7 +28,5 @@ alias contacts-client="cd ~/projects/hearsay-contacts-client"
 alias labs="cd ~/projects/HearsayLabs"
 alias helm="cd ~/projects/hearsay-helm"
 alias activities="cd ~/projects/hearsay-activities"
-alias gs="git status"
-alias gclean="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -D"
 alias d="clear && git diff"
 alias c="clear && git status"
