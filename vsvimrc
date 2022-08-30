@@ -1,0 +1,13 @@
+set relativenumber number
+
+map gi :vsc Edit.GoToImplementation<CR>
+map gr :vsc Edit.FindAllReferences<CR>
+
+map <Space>b :vsc Build.BuildSolution<CR>
+map <Space>r :vsc TestExplorer.RunAllTestsInContext<CR>
+map <Space>R :vsc TestExplorer.DebugAllTestsInContext<CR>
+map <Space>m :vsc Edit.NextMethod<CR>
+map <Space>M :vsc Edit.PreviousMethod<CR>
+
+map zl :source ~/.vsvimrc<CR>
+map ze :e ~/.vsvimrc<CR>
