@@ -18,3 +18,6 @@ root_rc_files=(".vimrc" ".zshrc")
 for file in ${root_rc_files[@]}; do
 	update_if_new $file
 done
+
+rm -rf ~/bashrc_extensions
+cp -r ./configs/bashrc_extensions ~/bashrc_extensions
