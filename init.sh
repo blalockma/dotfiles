@@ -1,9 +1,9 @@
 #!/bin/bash
 
 cp /etc/skel/.bashrc ~
-rm -rf ~/bashrc_extensions
 
 script_directory=$(dirname $(realpath $0))
+rm -rf ~/bashrc_extensions
 cp -r $script_directory/configs/bashrc_extensions ~/bashrc_extensions
 
 shopt -s dotglob
@@ -13,10 +13,11 @@ for file in $script_directory/configs/*; do
 	fi
 done
 
-echo -e "\n\n# CUSTOM SECTION FROM git:masonblalock/dotfiles\n" >> ~/.bashrc
-echo "shopt -s dotglob" >> ~/.bashrc
-echo "for file in ~/bashrc_extensions/*; do" >> ~/.bashrc
-echo "	source \$file" >> ~/.bashrc
-echo "done" >> ~/.bashrc
+# Install zsh
+sudo apt update
+sudo apt install zsh
+chsh -s $(which zsh)
 
 # Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm -f ~/.zshrc.pre-oh-my-zsh
