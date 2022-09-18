@@ -2,6 +2,9 @@
 
 cp /etc/skel/.bashrc ~
 
+git config --global user.name "Mason Blalock"
+git config --global user.email "15042748+blalockma@users.noreply.github.com"
+
 script_directory=$(dirname $(realpath $0))
 rm -rf ~/bashrc_extensions
 cp -r $script_directory/configs/bashrc_extensions ~/bashrc_extensions
@@ -22,6 +25,3 @@ for file in $script_directory/configs/*; do
 done
 
 rm -f ~/.zshrc.pre-oh-my-zsh
-
-git config --global user.name "Mason Blalock"
-git config --global user.email "15042748+blalockma@users.noreply.github.com"
