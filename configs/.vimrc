@@ -52,7 +52,10 @@ let g:ale_linters = {
 
 
 " Remaps
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <leader>b :!clear && dotnet build && pkill dotnet<CR>
