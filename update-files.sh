@@ -1,6 +1,6 @@
 function update_if_new {
 	if [ -f $1 ]; then
-		cp $1 ~/$1
+		cp ./configs/$1 ~/$1
 		return
 	fi
 
@@ -8,7 +8,7 @@ function update_if_new {
 	hash_of_existing_file=$(sha1sum ~/$1 | awk '{split($0,elements," "); print elements[1]}')
 
 	if [ $hash_of_repo_file != $hash_of_existing_file ]; then
-		cp $1 ~/$1
+		cp ./configs/$1 ~/$1
 	fi
 }
 
