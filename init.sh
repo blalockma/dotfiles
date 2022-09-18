@@ -47,3 +47,5 @@ rm packages-microsoft-prod.deb
 sudo apt-get update
 sudo apt-get install -y dotnet-sdk-3.1
 sudo apt-get install -y dotnet-sdk-6.0
+
+wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash

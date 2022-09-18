@@ -32,5 +32,14 @@ endif
 call plug#begin()
 
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
 
 call plug#end()
+
+" Configure Omnisharp
+let g:OmniSharp_server_use_net6 = 1
+
+" Configure Ale.
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
