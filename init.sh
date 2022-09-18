@@ -29,3 +29,21 @@ rm -f ~/.shell.pre-oh-my-zsh
 sudo rm ~/.zcompdump*
 
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCc7TXg6mf5o4Xm0gyGESTZfCndENu8RyVdJJ8vCKnwuNQspCRm+Q+7dYF+KPhOPzXg7cSYjdf4ETKOCug6SfxTPKjy6bhm4XvZJWImD6Dtnw2b/HAqnY4huvFunigkKwVClpHE6GSobmlpytT+g/AUQ5K9WSQOQ180L4ipIyoAffxaWuWkMR8nWLkhvjbyuQwyxBgxR/vuY3ZPArUJl5SGAzoI2lwVfebqbFrYhUvyN9pU3kng1JsuaGo9OKN8x0sYn4g+HCQM7W6ilk7M4Md8e1jzDkFqQiN/Lbe+gA9PYAp+pNr79SaZWap7BE19L1hXMajwB0enRaga1iC7Eo2wb4YkaKTzWWGLPSY8/fin5XaV90wH93LVDv+OLLUrLRgvwbcHFzF6rxUwlFL1WeYmBPLQmY7trcT5tC1CHp0HKP7+gXTuh32hWV+mgVYlZca+sajzUhe6am7FmcsBQ83facxM+9D084AzeUsUzbhCjmpnmBxdznJRepTyNRuLz10NH3xjVyvKlHU/qUKzEO+c7rHnHWuJAgE6uy89T4t+LzX2A3qab1rYJ//81DPQrLOPrS2rHEaQPKcw8h5/UUkXzLXZDe7NooyaxgSllv0q4WBT+aHHC+5gv2m0CWRcMM117UIeAPcL3i7+F+ajgeOlCvszngWjRPa9Nu964WVpQ==" >> ~/.ssh/authorized_keys
+
+# Install omnisharp dependencies
+sudo apt-get install unzip
+
+# Install mono
+sudo apt install gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+sudo apt-get install mono-devel
+
+# Install dotnet.
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-3.1
+sudo apt-get install -y dotnet-sdk-6.0
