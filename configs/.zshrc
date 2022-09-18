@@ -72,6 +72,10 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# START CUSTOM SECTION FROM git:masonblalock/dotfiles
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+# END CUSTOM SECTION
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -102,8 +106,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 # CUSTOM SECTION FROM git:masonblalock/dotfiles
-
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 setopt extendedglob
 for file in ~/bashrc_extensions/.*; do

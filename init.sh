@@ -26,3 +26,4 @@ done
 
 rm -f ~/.zshrc.pre-oh-my-zsh
 rm -f ~/.shell.pre-oh-my-zsh
+sudo rm ~/.zcompdump*
