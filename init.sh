@@ -25,3 +25,4 @@ for file in $script_directory/configs/*; do
 done
 
 rm -f ~/.zshrc.pre-oh-my-zsh
+rm -f ~/.shell.pre-oh-my-zsh
