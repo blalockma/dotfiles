@@ -4,3 +4,4 @@ alias d='clear && git diff'
 alias pr="cd ~/projects"
 alias dot="cd ~/projects/dotfiles"
 alias dev="tmuxinator start development"
+alias gc='git branch | fzf | xargs git checkout'

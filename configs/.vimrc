@@ -35,6 +35,8 @@ call plug#begin()
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'AndrewRadev/diffurcate.vim'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 

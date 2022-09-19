@@ -61,6 +61,7 @@ sudo apt-get install azure-functions-core-tools-3
 
 # Install Azure CLI
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az extension add --name azure-devops
 
 # Install fzf
 sudo apt-get install fzf
