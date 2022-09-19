@@ -33,6 +33,7 @@ call plug#begin()
 
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -54,7 +55,6 @@ let g:ale_linters = {
 " Remaps
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-nmap <silent> <leader>b :!clear && dotnet build && pkill dotnet<CR>
 
 func! WinMove(key)
     let t:curwin = winnr()
@@ -73,10 +73,8 @@ nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
-
-" Edit dotfiles vimrc configuration file
+nnoremap <silent> <leader>b :!clear && dotnet build && pkill dotnet<CR>
 nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
-" Update dotfiles config to updated vimrc
 nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
-" Source vimrc
 nnoremap <leader>vr :source $MYVIMRC<CR>
+nnoremap <leader>f :FZF<CR>
