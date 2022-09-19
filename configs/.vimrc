@@ -73,3 +73,10 @@ nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
+
+" Edit dotfiles vimrc configuration file
+nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
+" Update dotfiles config to updated vimrc
+nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
+" Source vimrc
+nnoremap <leader>vr :source $MYVIMRC<CR>
