@@ -5,6 +5,7 @@ set t_vb=
 " Tab sizes.
 set tabstop=4
 set shiftwidth=4
+set expandtab
 
 " Set cursor modes.
 set ttimeout
@@ -44,6 +45,7 @@ augroup omnisharp_commands
 
 	autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
 	autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
+	autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
 augroup END
 
 " Configure Ale.
