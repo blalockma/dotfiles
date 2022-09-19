@@ -40,12 +40,17 @@ call plug#end()
 
 " Configure Omnisharp
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_diagnostic_exclude_paths = [
+\ 'obj/',
+\ '/.nuget/'
+\]
 augroup omnisharp_commands
-	autocmd!
+    autocmd!
 
-	autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
-	autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
-	autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
+    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+    autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
+    autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
+    autocmd FileType cs nmap <silent> <buffer> <leader>gcc <Plug>(omnisharp_global_code_check)
 augroup END
 
 " Configure Ale.
