@@ -2,4 +2,4 @@ alias l='ls -la'
 alias c='clear && git status'
 alias d='clear && git diff'
 alias pr="cd ~/projects"
-alias dev="tmux new-session -s default || tmux attach-session -t default"
+alias dev="tmuxinator start development"

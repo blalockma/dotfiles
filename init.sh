@@ -23,6 +23,7 @@ for file in $script_directory/configs/*; do
 		cp $file ~
 	fi
 done
+cp -r $script_directory/configs/.config ~
 
 rm -f ~/.zshrc.pre-oh-my-zsh
 rm -f ~/.shell.pre-oh-my-zsh
@@ -66,3 +67,6 @@ sudo apt-get install fzf
 
 # Install silver searcher
 sudo apt-get install silversearcher-ag
+
+# Install tmuxinator
+sudo apt-get install tmuxinator

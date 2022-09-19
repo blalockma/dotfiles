@@ -15,7 +15,7 @@ function update_if_new {
 	fi
 }
 
-root_rc_files=(".vimrc" ".zshrc" ".tmux.conf")
+root_rc_files=(".vimrc" ".zshrc" ".tmux.conf" ".config/tmuxinator/development.yml")
 
 for file in ${root_rc_files[@]}; do
 	update_if_new $file
