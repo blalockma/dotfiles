@@ -63,3 +63,6 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Install fzf
 sudo apt-get install fzf
+
+# Install silver searcher
+sudo apt-get install silversearcher-ag
