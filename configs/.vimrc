@@ -42,6 +42,8 @@ Plug 'AndrewRadev/diffurcate.vim'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
 
@@ -96,3 +98,5 @@ nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <leader>; :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
