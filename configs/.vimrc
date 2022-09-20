@@ -7,6 +7,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Highlight text when searching
+set hlsearch
+
 " Set cursor modes.
 set ttimeout
 set ttimeoutlen=1
@@ -37,6 +40,8 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'AndrewRadev/diffurcate.vim'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -49,10 +54,13 @@ let g:OmniSharp_diagnostic_exclude_paths = [
 augroup omnisharp_commands
     autocmd!
 
-    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)zz
     autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
     autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
     autocmd FileType cs nmap <silent> <buffer> <leader>gcc <Plug>(omnisharp_global_code_check)
+    autocmd FileType cs nmap <silent> <buffer> <leader>. <Plug>(omnisharp_documentation)
+    autocmd FileType cs nmap <silent> <buffer> gu <Plug>(omnisharp_find_usages)
+
 augroup END
 
 " Configure Ale.
@@ -87,3 +95,4 @@ nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
 nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>f :FZF<CR>
+nnoremap <CR> :nohlsearch<CR><CR>

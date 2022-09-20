@@ -81,3 +81,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Install azurite (azure emulation)
 npm install -g azurite
+
+# Install neovim
+sudo apt install neovim
+echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' >> ~/.config/nvim/init.vim
+echo 'let &packpath = &runtimepath' >> ~/.config/nvim/init.vim
+echo 'source ~/.vimrc' >> ~/.config/nvim/init.vim
