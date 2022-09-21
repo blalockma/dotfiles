@@ -25,7 +25,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 
 # Package installs
 sudo apt update
-sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-3.1 dotnet-sdk-6.0 azure-functions-core-tools-3 fzf silversearcher-ag tmuxinator azurite software-properties-common neovim
+sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-3.1 dotnet-sdk-6.0 azure-functions-core-tools-3 fzf silversearcher-ag tmuxinator software-properties-common neovim
 
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -39,6 +39,8 @@ nvm install --lts
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+npm install -g azurite
 
 mkdir -p ~/.config/nvim/
 echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' >> ~/.config/nvim/init.vim
