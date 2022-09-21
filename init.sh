@@ -83,7 +83,10 @@ export NVM_DIR="$HOME/.nvm"
 npm install -g azurite
 
 # Install neovim
-sudo apt install neovim
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
 mkdir -p ~/.config/nvim/
 echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' >> ~/.config/nvim/init.vim
 echo 'let &packpath = &runtimepath' >> ~/.config/nvim/init.vim
