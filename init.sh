@@ -25,7 +25,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 
 # Package installs
 sudo apt update
-sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-3.1 dotnet-sdk-6.0 azure-functions-core-tools-3 fzf silversearcher-ag tmuxinator software-properties-common neovim
+sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-3.1 dotnet-sdk-6.0 azure-functions-core-tools-3 fzf silversearcher-ag tmuxinator software-properties-common neovim i3
 
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
