@@ -92,7 +92,8 @@ nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
-nnoremap <silent> <leader>b :!clear && dotnet build && pkill dotnet<CR>
+nnoremap <silent> <leader>b :!dotnet build && pkill dotnet<CR>
+nnoremap <silent> <leader>t :OmniSharpRunTestsInFile<CR>
 nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
 nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
