@@ -44,6 +44,7 @@ Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'ionide/Ionide-vim'
 
 call plug#end()
 
