@@ -49,6 +49,7 @@ call plug#end()
 
 " Configure Omnisharp
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_want_snippet = 1
 let g:OmniSharp_diagnostic_exclude_paths = [
 \ 'obj/',
 \ '/.nuget/'
@@ -56,14 +57,32 @@ let g:OmniSharp_diagnostic_exclude_paths = [
 augroup omnisharp_commands
     autocmd!
 
-    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)zz
+    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
     autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
     autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
     autocmd FileType cs nmap <silent> <buffer> <leader>gcc <Plug>(omnisharp_global_code_check)
     autocmd FileType cs nmap <silent> <buffer> <leader>. <Plug>(omnisharp_documentation)
     autocmd FileType cs nmap <silent> <buffer> gu <Plug>(omnisharp_find_usages)
+    autocmd FileType cs nmap <silent> <buffer> <leader>osfx <Plug>(omnisharp_fix_usings)
 
 augroup END
+"
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview', 'popup'
+" and 'popuphidden' if you don't want to see any documentation whatsoever.
+" Note that neovim does not support `popuphidden` or `popup` yet:
+" https://github.com/neovim/neovim/issues/10996
+if has('patch-8.1.1880')
+  set completeopt=longest,menuone,popuphidden
+  " Highlight the completion documentation popup background/foreground the same as
+  " the completion menu itself, for better readability with highlighted
+  " documentation.
+  set completepopup=highlight:Pmenu,border:off
+else
+  set completeopt=longest,menuone,preview
+  " Set desired preview window height for viewing documentation.
+  set previewheight=5
+endif
 
 " Configure Ale.
 let g:ale_linters = {
@@ -73,7 +92,7 @@ let g:ale_linters = {
 
 " Remaps
 nnoremap <SPACE> <Nop>
-let mapleader = " "
+let mapleader = "\<BS>"
 
 func! WinMove(key)
     let t:curwin = winnr()
@@ -88,16 +107,29 @@ func! WinMove(key)
     endif
 endfu
 
+imap kj <Esc>
+
+nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
+nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>
+
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
+nnoremap <silent> gli :call WinMove('l')<cr><Plug>(omnisharp_find_implementations)
+nnoremap <silent> gld :call WinMove('l')<cr><Plug>(omnisharp_go_to_definition)
+
 nnoremap <silent> <leader>b :!dotnet build && pkill dotnet<CR>
-nnoremap <silent> <leader>t :OmniSharpRunTestsInFile<CR>
-nnoremap <leader>ve :e ~/projects/dotfiles/configs/.vimrc<CR>
-nnoremap <leader>vu :! ~/projects/dotfiles/update-files.sh<CR><CR>
-nnoremap <leader>vr :source $MYVIMRC<CR>
+nnoremap <silent> <leader>t :OmniSharpRunTest<CR>
+nnoremap <silent> <leader>T :OmniSharpRunTestsInFile<CR>
+
 nnoremap <leader>f :FZF<CR>
 nnoremap <CR> :nohlsearch<CR><CR>
+
 nnoremap <leader>; :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
+
+nnoremap <leader>3 :NERDTreeFind<CR>
+inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
+\ getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
