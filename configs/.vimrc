@@ -61,10 +61,12 @@ augroup omnisharp_commands
 
     autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
     autocmd FileType cs nmap <silent> <buffer> gi <Plug>(omnisharp_find_implementations)
+    autocmd FileType cs nmap <silent> <buffer> gu <Plug>(omnisharp_find_usages)
     autocmd FileType cs nmap <silent> <buffer> <leader>r <Plug>(omnisharp_rename)
     autocmd FileType cs nmap <silent> <buffer> <leader>gcc <Plug>(omnisharp_global_code_check)
     autocmd FileType cs nmap <silent> <buffer> <leader>. <Plug>(omnisharp_documentation)
-    autocmd FileType cs nmap <silent> <buffer> gu <Plug>(omnisharp_find_usages)
+    autocmd FileType cs nmap <silent> <buffer> <leader>go <Plug>(omnisharp_code_actions)
+    autocmd FileType cs vmap <silent> <buffer> <leader>go <Plug>(omnisharp_code_actions)
     autocmd FileType cs nmap <silent> <buffer> <leader>osfx <Plug>(omnisharp_fix_usings)
     autocmd FileType cs nmap <silent> <buffer> <leader>osfs <Plug>(omnisharp_find_symbol)
 
