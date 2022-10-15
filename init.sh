@@ -54,7 +54,8 @@ for file in $script_directory/configs/*; do
     cp -r $file ~
 done
 
-cp $script_directory/bin ~ -r
+sudo cp $script_directory/bin/* /usr/local/bin
+
 
 # Cleanup
 rm -f ~/.zshrc.pre-oh-my-zsh
