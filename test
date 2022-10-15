@@ -1,5 +1,0 @@
-script_directory=$(dirname $(realpath $0))
-shopt -s dotglob
-for file in $script_directory/configs/*; do
-    cp -r $file ~
-done
