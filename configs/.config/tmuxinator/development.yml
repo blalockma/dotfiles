@@ -1,9 +1,0 @@
-# /home/mason/.config/tmuxinator/development.yml
-
-name: development
-root: ~/projects
-
-windows:
-  - terminal:
-  - vim: vim
-  - services:

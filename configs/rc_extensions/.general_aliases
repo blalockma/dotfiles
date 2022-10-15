@@ -1,8 +1,10 @@
+alias vim=nvim
 alias l='ls -la'
 alias c='clear && git status'
 alias d='clear && git diff'
 alias pr="cd ~/projects"
 alias dot="cd ~/projects/dotfiles"
-alias dev="tmuxinator start development"
 alias gc='git branch | fzf | xargs git checkout'
-alias vim='nvim'
+alias dev="tmux new-session -s default || tmux attach-session -t default"
+
+bindkey -s "^f" "tmux-sessionizer\n"

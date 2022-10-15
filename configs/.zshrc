@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # CUSTOM SECTION FROM git:masonblalock/dotfiles
 
 setopt extendedglob
-for file in ~/bashrc_extensions/.*; do
+for file in ~/rc_extensions/.*; do
   source $file
 done
 
