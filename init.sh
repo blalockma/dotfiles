@@ -25,7 +25,7 @@ rm packages-microsoft-prod.deb
 
 # APT Package installs
 sudo apt update
-sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-6.0 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++ tmux git
+sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-6.0 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++ tmux
 
 # Nvim Dependency Manager
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -53,6 +53,8 @@ shopt -s dotglob
 for file in $script_directory/configs/*; do
     cp -r $file ~
 done
+
+cp $script_directory/bin ~ -r
 
 # Cleanup
 rm -f ~/.zshrc.pre-oh-my-zsh

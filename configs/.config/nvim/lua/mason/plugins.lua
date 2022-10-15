@@ -14,7 +14,7 @@ return require('packer').startup(function()
 
     use 'preservim/nerdtree'
     use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate && :TSInstall c_sharp && :TSInstall html"
+        run = ":TSUpdate && :TSInstall all"
     })
 
     use {
