@@ -5,26 +5,33 @@ script_directory=$(dirname $(realpath $0))
 git config --global user.name "Mason Blalock"
 git config --global user.email "15042748+blalockma@users.noreply.github.com"
 
-# Mono
+# Install basic tools for install
+sudo apt install -y curl
+
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
 echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+
+sudo add-apt-repository ppa:neovim-ppa/stable
 
 # dotnet
 wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
-# Azure Functions Core Tools
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-
-sudo add-apt-repository ppa:neovim-ppa/stable
-
-# Package installs
+# APT Package installs
 sudo apt update
-sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-6.0 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++
+sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-6.0 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++ tmux git
 
+# Nvim Dependency Manager
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+# Azure Tools
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az extension add --name azure-devops
@@ -51,3 +58,5 @@ done
 rm -f ~/.zshrc.pre-oh-my-zsh
 rm -f ~/.shell.pre-oh-my-zsh
 sudo rm ~/.zcompdump*
+
+echo "Done!"
