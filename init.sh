@@ -10,7 +10,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 
 # dotnet
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
@@ -23,7 +23,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 
 # Package installs
 sudo apt update
-sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-3.1 dotnet-sdk-6.0 azure-functions-core-tools-3 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++
+sudo apt install -y gnupg ca-certificates zsh unzip mono-devel dotnet-sdk-6.0 fzf silversearcher-ag software-properties-common neovim ripgrep gcc make g++
 
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
