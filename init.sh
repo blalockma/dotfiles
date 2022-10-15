@@ -1,6 +1,23 @@
 #!/bin/bash
 
 script_directory=$(dirname $(realpath $0))
+distro=$(command -v lsb_release &>/dev/null && lsb_release -d | awk '{print $2}' || echo 'UNKNOWN')
+
+if [[ $distro != "Ubuntu" ]]
+then
+    echo "Script currently only supports Ubuntu. Exiting."
+    exit 1
+fi
+
+ubuntu_version=$(lsb_release -d | awk '{print $3}')
+
+if [[ $ubuntu_version != 22.04* ]] && [[ $ubuntu_version != 20.04* ]]
+then
+    echo "Unsupported Ubuntu version. Exiting"
+    exit 1
+fi
+
+--------------------------------------
 
 git config --global user.name "Mason Blalock"
 git config --global user.email "15042748+blalockma@users.noreply.github.com"
@@ -19,7 +36,13 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo add-apt-repository ppa:neovim-ppa/stable
 
 # dotnet
-wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+if [[ $ubuntu_version = 22.04* ]]
+then
+    wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+elif [[ $ubuntu_version = 20.04* ]]
+    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+then
+fi
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
