@@ -1,0 +1,16 @@
+alias vim=nvim
+
+alias l='ls -la'
+alias c='clear && git status 2>/dev/null'
+alias d='clear && git diff'
+
+alias gc='git branch | fzf | xargs git checkout'
+
+alias dev="tmux new-session -d -s default && hometmux || hometmux"
+alias hometmux="tmux new-session -s home || tmux attach-session -t home"
+
+alias desktop="ssh 192.168.1.88 -p 2222"
+
+alias lg="lazygit"
+
+bindkey -s "^f" "tmux-sessionizer\n"

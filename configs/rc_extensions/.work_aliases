@@ -1,0 +1,2 @@
+alias blob="azurite-blob -l ~/.azurite"
+alias al="az login --use-device-code"
