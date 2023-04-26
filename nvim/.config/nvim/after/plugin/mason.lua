@@ -81,7 +81,6 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 
 require("lspconfig").omnisharp.setup {
-    enable_roslyn_analyzers = true,
     on_attach = on_attach
 }
 require("lspconfig").tsserver.setup {}
