@@ -6,6 +6,10 @@ return require('packer').startup(function()
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
+    use {
+        'neoclide/coc.nvim',
+        branch = 'release'
+    }
 
     use {
         'nvim-telescope/telescope.nvim',
